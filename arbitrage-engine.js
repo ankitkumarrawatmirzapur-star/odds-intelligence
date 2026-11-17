@@ -1,0 +1,3 @@
+(function(g){g.Arbitrage={
+ calculate(bank,oddsArr,commissionRate=0,model="market"){const a=Calc.allocate(bank,oddsArr);let fee=0;if(model==="market")fee=Calc.commission(a.grossProfit,commissionRate,"market");else if(model==="winning"){const per=oddsArr.map((o,i)=>Calc.commission(a.stakes[i]*(o-1),commissionRate,"winning",a.stakes[i]));fee=per.reduce((x,y)=>x+y,0)}return {...a,fee,net:a.grossProfit-fee,netROI:(a.grossProfit-fee)/bank*100,status:a.sum<1?"UNDERROUND":Math.abs(a.sum-1)<1e-10?"BREAK-EVEN":"OVERROUND"}}
+}})(window);

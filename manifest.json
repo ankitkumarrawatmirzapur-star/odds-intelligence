@@ -1,0 +1,9 @@
+{
+  "name": "ODDS INTELLIGENCE | WEALTH BUILDER OS",
+  "short_name": "Odds Intelligence",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1421",
+  "theme_color": "#101827",
+  "icons": []
+}

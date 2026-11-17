@@ -1,0 +1,4 @@
+(function(g){g.Risk={
+ summary(transactions){const sum=c=>transactions.filter(t=>t.category===c).reduce((s,t)=>s+t.amount,0);const exposure=sum("exposure");const deposits=sum("savings")+sum("investment_deposit")+sum("bet_deposit");const withdrawals=sum("investment_withdrawal")+sum("withdrawal");const pl=sum("investment_pl")+sum("bet_pl")-sum("fee");return {deposits,withdrawals,exposure,pl,ledgerNet:deposits-withdrawals+pl,betPL:sum("bet_pl"),available:Math.max(0,deposits-withdrawals+pl-exposure)}},
+ lossLimitHit(transactions,limit){const losses=transactions.filter(t=>t.category==="bet_pl"&&t.amount<0).reduce((s,t)=>s+Math.abs(t.amount),0);return {losses,hit:limit>0&&losses>=limit}}
+}})(window);

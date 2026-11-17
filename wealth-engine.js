@@ -1,0 +1,3 @@
+(function(g){g.Wealth={
+ project(pv,target,pmt,years,annual,inflation=0,tax=0){const fv=Calc.futureValue(pv,annual,years,pmt),contrib=pv+pmt*Math.round(years*12),growth=Math.max(0,fv-contrib),afterTax=fv-growth*(tax/100),real=afterTax/Math.pow(1+inflation/100,years);return {future:afterTax,contributions:contrib,growth:afterTax-contrib,real,completion:target>0?afterTax/target*100:0,gap:Math.max(0,target-pv),requiredCagr:Calc.cagr(pv,target,years)*100}}
+}})(window);
